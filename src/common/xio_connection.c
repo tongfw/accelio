@@ -2320,7 +2320,7 @@ static void xio_connection_post_destroy(struct kref *kref)
 	/* leading connection */
 	spin_lock(&session->connections_list_lock);
 	if (session->lead_connection &&
-	    session->lead_connection->nexus == connection->nexus) {
+	    session->lead_connection == connection) {
                 if ((connection->state == XIO_CONNECTION_STATE_INIT ||
                      connection->state == XIO_CONNECTION_STATE_DISCONNECTED ||
                      connection->state == XIO_CONNECTION_STATE_ERROR) &&
